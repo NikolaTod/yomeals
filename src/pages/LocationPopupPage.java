@@ -7,8 +7,10 @@ import org.openqa.selenium.WebElement;
 
 public class LocationPopupPage extends BasicPage {
 
-	public LocationPopupPage(WebDriver driver, JavascriptExecutor js) {
-		super(driver, js);
+	private JavascriptExecutor js;
+	
+	public LocationPopupPage(WebDriver driver) {
+		super(driver);
 	}
 
 	public WebElement getSelectLocation() {
