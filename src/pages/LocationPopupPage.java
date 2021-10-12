@@ -8,9 +8,10 @@ import org.openqa.selenium.WebElement;
 public class LocationPopupPage extends BasicPage {
 
 	private JavascriptExecutor js;
-	
+
 	public LocationPopupPage(WebDriver driver) {
 		super(driver);
+		js = (JavascriptExecutor) driver;
 	}
 
 	public WebElement getSelectLocation() {
@@ -18,11 +19,11 @@ public class LocationPopupPage extends BasicPage {
 	}
 
 	public WebElement getClose() {
-		return this.driver.findElement(By.xpath("//*[contains(@class,'close-btn')]"));
+		return this.driver.findElement(By.xpath("//*[@class='close-btn close-btn-white']"));
 	}
 
 	public WebElement getKeyword() {
-		return this.driver.findElement(By.id("locality_keyword"));
+		return this.driver.findElement(By.xpath("//*[@id='locality_keyword']"));
 	}
 
 	public WebElement getLocationItem(String locationName) {
@@ -30,22 +31,24 @@ public class LocationPopupPage extends BasicPage {
 	}
 
 	public WebElement getLocationInput() {
-		return this.driver.findElement(By.id("location_id"));
+		return this.driver.findElement(By.xpath("//*[@id='location_id']"));
 	}
 
 	public WebElement getSubmit() {
-		return this.driver.findElement(By.name("btn_submit"));
+		return this.driver.findElement(By.xpath("//*[@name='btn_submit']"));
 	}
 
 	public void openSelectLocation() {
 		this.getSelectLocation().click();
 	}
+	
 
 	public void setLocation(String locationName) {
+		this.openSelectLocation();
 		this.getKeyword().click();
-		String value = this.getLocationItem(locationName).getAttribute("data-value");
-		this.js.executeScript("arguments[0].value=arguments[1]", this.getLocationInput(), value);
-		this.js.executeScript("arguments[0].click();", this.getSubmit());
+		String location = this.getLocationItem(locationName).getText();
+		js.executeScript("arguments[0].value=arguments[1]", this.getLocationInput(),location);
+
 	}
 
 	public void closeLocationSelect() {
