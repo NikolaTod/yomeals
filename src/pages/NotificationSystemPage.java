@@ -6,17 +6,17 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class NotificationSistemPage extends BasicPage {
+public class NotificationSystemPage extends BasicPage {
 
 	private WebDriverWait waiter;
 
-	public NotificationSistemPage(WebDriver driver) {
+	public NotificationSystemPage(WebDriver driver) {
 		super(driver);
 		this.waiter = new WebDriverWait(driver, 20);
 	}
 
 	public WebElement getMessage() {
-		return this.driver.findElement(By.xpath("//*[contains(@class, 'alert--success')"));
+		return this.driver.findElement(By.xpath("//*[contains(@class, 'alert--success') or contains(@class, 'alert--danger')][contains(@style,'display: block')]"));
 	}
 
 	public String getMessageText() {

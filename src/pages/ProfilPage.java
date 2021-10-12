@@ -67,17 +67,22 @@ public class ProfilPage extends BasicPage {
 		js.executeScript("arguments[0].click();", this.getRemovePic());
 	}
 
-	public void changeInfo(String firstName, String lastName, String email, String address, String phone,
+	public void changeInfo(String firstName, String lastName, String address, String phone,
 			String zipCode, String country, String state, String city) {
+		this.getFirstName().clear();
 		this.getFirstName().sendKeys(firstName);
+		this.getLastName().clear();
 		this.getLastName().sendKeys(lastName);
-		this.getEmail().sendKeys(email);
+		this.getAddress().clear();
 		this.getAddress().sendKeys(address);
+		this.getPhoneNo().clear();
 		this.getPhoneNo().sendKeys(phone);
+		this.getZipCode().clear();
 		this.getZipCode().sendKeys(zipCode);
 		this.getCountry().selectByVisibleText(country);
 		this.getState().selectByVisibleText(state);
 		this.getCity().selectByVisibleText(city);
+		this.getSave().click();
 	}
 
 	public void uploadPic(String imgPath) {

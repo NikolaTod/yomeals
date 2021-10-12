@@ -41,17 +41,17 @@ public class LocationPopupPage extends BasicPage {
 	public void openSelectLocation() {
 		this.getSelectLocation().click();
 	}
-	
 
-	public void setLocation(String locationName) {
+	public void setLocation(String locationName) throws InterruptedException {
 		this.openSelectLocation();
+		Thread.sleep(1000);
 		this.getKeyword().click();
-		String location = this.getLocationItem(locationName).getText();
-		js.executeScript("arguments[0].value=arguments[1]", this.getLocationInput(),location);
-
+		String location = this.getLocationItem(locationName).getAttribute("data-value");
+		js.executeScript("arguments[0].value=arguments[1];", this.getLocationInput(), location);
+		this.getSubmit().click();
 	}
 
-	public void closeLocationSelect() {
+	public void closePopup() {
 		this.getClose().click();
 	}
 }
