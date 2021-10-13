@@ -18,7 +18,7 @@ import pages.MealPage;
 import pages.NotificationSystemPage;
 import pages.ProfilPage;
 
-public class BasicTest {
+public abstract class BasicTest {
 
 	protected WebDriver driver;
 	private JavascriptExecutor js;

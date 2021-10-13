@@ -4,15 +4,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 public class ProfilPage extends BasicPage {
 
 	private JavascriptExecutor js;
 
-	public ProfilPage(WebDriver driver) {
+	public ProfilPage(WebDriver driver, JavascriptExecutor js) {
 		super(driver);
-		js = (JavascriptExecutor) driver;
+		this.js = js;
 	}
 
 	public WebElement getFirstName() {
@@ -68,7 +69,7 @@ public class ProfilPage extends BasicPage {
 	}
 
 	public void changeInfo(String firstName, String lastName, String address, String phone,
-			String zipCode, String country, String state, String city) {
+			String zipCode, String country, String state, String city) throws InterruptedException {
 		this.getFirstName().clear();
 		this.getFirstName().sendKeys(firstName);
 		this.getLastName().clear();
@@ -80,14 +81,15 @@ public class ProfilPage extends BasicPage {
 		this.getZipCode().clear();
 		this.getZipCode().sendKeys(zipCode);
 		this.getCountry().selectByVisibleText(country);
+		Thread.sleep(100);
 		this.getState().selectByVisibleText(state);
 		this.getCity().selectByVisibleText(city);
 		this.getSave().click();
 	}
 
-	public void uploadPic(String imgPath) {
-		js.executeScript("arguments[0].click();", this.getUploadPic());
-		this.getUploadPic().sendKeys(imgPath);
+	public void uploadPic(String imgPath) throws InterruptedException {
+		js.executeScript("arguments[0].click();", this.getUploadPic());	
+		driver.findElement(By.xpath("//input[@type='file']")).sendKeys(imgPath);;
 	}
 
 }

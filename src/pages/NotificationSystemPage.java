@@ -10,9 +10,9 @@ public class NotificationSystemPage extends BasicPage {
 
 	private WebDriverWait waiter;
 
-	public NotificationSystemPage(WebDriver driver) {
+	public NotificationSystemPage(WebDriver driver, WebDriverWait waiter) {
 		super(driver);
-		this.waiter = new WebDriverWait(driver, 20);
+		this.waiter = waiter;
 	}
 
 	public WebElement getMessage() {

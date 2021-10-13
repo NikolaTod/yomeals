@@ -4,14 +4,18 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LocationPopupPage extends BasicPage {
 
 	private JavascriptExecutor js;
+	private WebDriverWait waiter;
 
-	public LocationPopupPage(WebDriver driver) {
+	public LocationPopupPage(WebDriver driver, JavascriptExecutor js, WebDriverWait waiter) {
 		super(driver);
-		js = (JavascriptExecutor) driver;
+		this.js = js;
+		this.waiter = waiter;
 	}
 
 	public WebElement getSelectLocation() {
@@ -42,16 +46,17 @@ public class LocationPopupPage extends BasicPage {
 		this.getSelectLocation().click();
 	}
 
-	public void setLocation(String locationName) throws InterruptedException {
-		this.openSelectLocation();
-		Thread.sleep(1000);
-		this.getKeyword().click();
-		String location = this.getLocationItem(locationName).getAttribute("data-value");
-		js.executeScript("arguments[0].value=arguments[1];", this.getLocationInput(), location);
-		this.getSubmit().click();
-	}
-
 	public void closePopup() {
 		this.getClose().click();
 	}
+
+	public void setLocation(String locationName) {
+		this.openSelectLocation();
+		this.getKeyword().click();
+		String location = this.getLocationItem(locationName).getAttribute("data-value");
+		js.executeScript("arguments[0].setAttribute(arguments[1], arguments[2]);", this.getLocationInput(), "value",
+				location);
+		js.executeScript("arguments[0].click();", this.getSubmit());
+	}
+
 }
