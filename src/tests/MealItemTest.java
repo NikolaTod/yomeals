@@ -3,6 +3,8 @@ package tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import pages.LocationPopupPage;
+
 public class MealItemTest extends BasicTest {
 
 	
@@ -18,6 +20,7 @@ public class MealItemTest extends BasicTest {
 //		notificationSystemPage.waitForMsgToDissapear();
 //		
 //		String location = "City Center - Albany";
+//		locationPopupPage.openSelectLocation();
 //		locationPopupPage.setLocation(location);
 //		Thread.sleep(500);
 //		
@@ -27,19 +30,30 @@ public class MealItemTest extends BasicTest {
 //		Assert.assertTrue(notificationSystemPage.getMessageText().contains("Meal Added To Cart"), "Error: add");		
 //	}
 	
+//	@Test
+//	public void addToFavoriteTest() throws InterruptedException {
+//		driver.get(baseUrl + "meal/lobster-shrimp-chicken-quesadilla-combo");
+//		locationPopupPage.closePopup();
+//		mealPage.addToFavorite();
+//		Assert.assertTrue(notificationSystemPage.getMessageText().contains("Please login first"), "Error: add");
+//
+//		driver.get(baseUrl + "guest-user/login-form");
+//		loginPage.login(email, password);
+//		driver.get(baseUrl + "meal/lobster-shrimp-chicken-quesadilla-combo");
+//		mealPage.addToFavorite();
+//		Assert.assertTrue(notificationSystemPage.getMessageText().contains("Product has been added to your favorites"),
+//				"Error: add");
+//
+//	}
 	@Test
-	public void addToFavoriteTest() throws InterruptedException {
-		driver.get(baseUrl + "meal/lobster-shrimp-chicken-quesadilla-combo");
+	public void clearCartTest() {
+		driver.get(baseUrl+"/meals");
 		locationPopupPage.closePopup();
-		mealPage.addToFavorite();
-		Assert.assertTrue(notificationSystemPage.getMessageText().contains("Please login first"), "Error: add");
-
-		driver.get(baseUrl + "guest-user/login-form");
-		loginPage.login(email, password);
-		driver.get(baseUrl + "meal/lobster-shrimp-chicken-quesadilla-combo");
-		mealPage.addToFavorite();
-		Assert.assertTrue(notificationSystemPage.getMessageText().contains("Product has been added to your favorites"),
-				"Error: add");
-
+		locationPopupPage.openSelectLocation();
+		String location = "City Center - Albany";
+		locationPopupPage.setLocation(location);
+		
+		
+		
 	}
 }
