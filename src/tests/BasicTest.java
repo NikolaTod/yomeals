@@ -32,7 +32,7 @@ public abstract class BasicTest {
 	protected ProfilPage profilePage;
 	protected AuthPage authPage;
 	protected MealPage mealPage;
-	protected CartSummaryPage castSummaryPage;
+	protected CartSummaryPage cartSummaryPage;
 	
 	@BeforeMethod
 	public void beforeMethod() {
@@ -46,7 +46,7 @@ public abstract class BasicTest {
 		profilePage = new ProfilPage(driver, js);
 		authPage = new AuthPage(driver);
 		mealPage = new MealPage(driver, js);
-		castSummaryPage = new CartSummaryPage(driver);		
+		cartSummaryPage = new CartSummaryPage(driver);		
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
