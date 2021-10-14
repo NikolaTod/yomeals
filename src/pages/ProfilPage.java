@@ -80,9 +80,9 @@ public class ProfilPage extends BasicPage {
 		this.getZipCode().clear();
 		this.getZipCode().sendKeys(zipCode);
 		this.getCountry().selectByVisibleText(country);
-		Thread.sleep(500);
+		Thread.sleep(200);
 		this.getState().selectByVisibleText(state);
-		Thread.sleep(500);
+		Thread.sleep(200);
 		this.getCity().selectByVisibleText(city);
 		this.getSave().click();
 	}
