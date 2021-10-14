@@ -4,18 +4,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LocationPopupPage extends BasicPage {
 
 	private JavascriptExecutor js;
-	private WebDriverWait waiter;
 
-	public LocationPopupPage(WebDriver driver, JavascriptExecutor js, WebDriverWait waiter) {
+	public LocationPopupPage(WebDriver driver, JavascriptExecutor js) {
 		super(driver);
 		this.js = js;
-		this.waiter = waiter;
 	}
 
 	public WebElement getSelectLocation() {

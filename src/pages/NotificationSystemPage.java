@@ -16,14 +16,15 @@ public class NotificationSystemPage extends BasicPage {
 	}
 
 	public WebElement getMessage() {
-		return this.driver.findElement(By.xpath("//*[contains(@class, 'alert--success') or contains(@class, 'alert--danger')][contains(@style,'display: block')]"));
+		return this.driver.findElement(By.xpath(
+				"//*[contains(@class, 'alert--success') or contains(@class, 'alert--danger')][contains(@style,'display: block')]"));
 	}
 
 	public String getMessageText() {
 		return this.getMessage().getText();
 	}
 
-	public void waitForMsgToDissapear() {
+	public void waitForMsgToDisappear() {
 		this.waiter.until(ExpectedConditions.attributeContains(By.xpath("//*[contains(@class, 'system_message')]"),
 				"style", "display: none"));
 	}

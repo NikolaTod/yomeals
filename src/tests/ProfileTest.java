@@ -49,12 +49,12 @@ public class ProfileTest extends BasicTest {
 		Assert.assertTrue(notificationSystemPage.getMessageText().contains("Profile Image Uploaded Successfully"),
 				"Error: login");
 
-		notificationSystemPage.waitForMsgToDissapear();
+		notificationSystemPage.waitForMsgToDisappear();
 		profilePage.removePic();
 
 		Assert.assertTrue(notificationSystemPage.getMessageText().contains("Profile Image Deleted Successfully"),
 				"Error: login");
-		notificationSystemPage.waitForMsgToDissapear();
+		notificationSystemPage.waitForMsgToDisappear();
 		authPage.logout();
 
 		Assert.assertTrue(notificationSystemPage.getMessageText().contains("Logout Successfull!"), "Error: login");

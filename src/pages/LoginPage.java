@@ -21,7 +21,7 @@ public class LoginPage extends BasicPage {
 	public WebElement getLoginBtn() {
 		return this.driver.findElement(By.name("btn_submit"));
 	}
-	
+
 	public void login(String email, String password) throws InterruptedException {
 		this.getEmail().clear();
 		this.getEmail().sendKeys(email);
@@ -30,5 +30,5 @@ public class LoginPage extends BasicPage {
 		Thread.sleep(1000);
 		this.getLoginBtn().click();
 	}
-	
+
 }
