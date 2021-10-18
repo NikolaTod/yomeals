@@ -34,5 +34,7 @@
 	<classpathentry kind="lib" path="lib/xmlbeans-4.0.0.jar"/>
 	<classpathentry kind="lib" path="lib/xmlgraphics-commons-2.4.jar"/>
 	<classpathentry kind="lib" path="lib/xmlsec-2.2.1.jar"/>
+	<classpathentry kind="lib" path="lib/file-utils.jar"/>
+	<classpathentry kind="lib" path="lib/org.apache.commons.io.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

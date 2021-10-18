@@ -61,13 +61,7 @@ public class MealItemTest extends BasicTest {
 		// Verify that the meal is added to favorite
 		Assert.assertTrue(notificationSystemPage.getMessageText().contains("Product has been added to your favorites"),
 				"Add favorite error");
-		// Remove the meal from favorite
-		mealPage.addToFavorite();
-		Thread.sleep(500);
-		// Verify that the meal is removed from favorite
-		Assert.assertTrue(
-				notificationSystemPage.getMessageText().contains("Product has been removed from your favorites"),
-				"Remove from favorite error");
+		notificationSystemPage.waitForMsgToDisappear();
 	}
 
 	@Test
